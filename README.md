@@ -85,7 +85,7 @@ ml_roadmap_project/
 │
 ```
 
-## 已实现的模型（63个，全部可独立运行）
+## 已实现的模型（98个，全部可独立运行）
 
 > 所有模型均为**纯 NumPy 实现**（部分使用 matplotlib / scipy），无需安装 PyTorch / TensorFlow。
 > 每个文件均可独立运行，运行后在 `results/` 目录生成可视化图表。
@@ -99,6 +99,19 @@ ml_roadmap_project/
 | `random_forest.py` | 随机森林 | 特征重要性，OOB 评估 |
 | `xgboost_model.py` | XGBoost | 梯度提升树，特征重要性 |
 | `cnn.py` | 卷积神经网络 | MNIST，3层卷积 |
+| `naive_bayes/gaussian_nb.py` | 高斯朴素贝叶斯 | 从零实现，条件高斯分布，决策边界 |
+| `naive_bayes/multinomial_nb.py` | 多项式朴素贝叶斯 | 文本分类，词袋模型，每类Top词 |
+| `naive_bayes/bernoulli_nb.py` | 伯努利朴素贝叶斯 | 二值特征，ROC曲线，特征概率热力图 |
+| `knn/knn_classifier.py` | KNN 分类器 | K值敏感性，欧氏/曼哈顿距离，决策边界 |
+| `knn/knn_regressor.py` | KNN 回归器 | uniform/distance加权，预测曲线，权重对比 |
+| `decision_tree/decision_tree_cart.py` | CART 决策树 | Gini二分，max_depth敏感性，树结构可视化 |
+| `decision_tree/decision_tree_c45.py` | C4.5 决策树 | 信息增益率，决策边界 |
+| `decision_tree/decision_tree_id3.py` | ID3 决策树 | 信息增益，决策边界 |
+| `regularized_regression/ridge_regression.py` | 岭回归 | L2正则化，闭式解，α敏感性，系数范数曲线 |
+| `regularized_regression/lasso_regression.py` | Lasso 回归 | L1正则化，坐标下降，特征选择效果 |
+| `gmm/em_algorithm.py` | EM 算法 | 单维高斯混合，对数似然收敛，责任度热力图 |
+| `gmm/gmm.py` | 高斯混合模型 | 多元高斯，软聚类，BIC/AIC分析，K值敏感性 |
+| `crf/linear_chain_crf.py` | 线性链CRF | 序列标注，前向-后向，Viterbi解码，序列对比 |
 
 ### 🔍 无监督学习 (`unsupervised_learning/`)
 | 文件 | 算法 | 亮点 |
@@ -255,16 +268,15 @@ pip install -r requirements.txt
 
 ## 项目完成状态
 
-✅ **83 个模型文件，全部实现完毕**（本次新增 20 个）
+✅ **98 个模型文件，全部实现完毕**（本次新增 15 个经典模型）
 
-### 🆕 本次新增模块
+### 🆕 本次新增经典模块
 
 | 模块 | 文件 | 说明 |
 |------|------|------|
-| **优化算法** (`optimization/`) | `sgd_variants.py`, `adam_variants.py`, `lr_scheduler.py` | SGD/Adam 变体，StepLR/ExponentialLR/CosineAnnealing 等调度策略 |
-| **特征工程** (`feature_engineering/`) | `feature_selection.py`, `dimensionality_reduction.py`, `feature_encoding.py` | Filter/Wrapper/Embedded 方法，PCA/LDA/t-SNE，One-Hot/Target Encoding |
-| **模型解释性** (`interpretability/`) | `shap_explainer.py`, `lime_explainer.py`, `permutation_importance.py` | KernelSHAP/LIME（手写），排列重要性，多维度评估 |
-| **推荐系统** (`recommendation/`) | `collaborative_filtering.py`, `matrix_factorization.py`, `content_based.py` | User/Item-Based CF，SGD MF/ALSMF，用户画像+MMR |
-| **生成模型** (`generative/`) | `vae.py`, `gan.py`, `diffusion.py` | VAE/GAN/DDPM（简化实现），重构/生成可视化 |
-| **迁移学习** (`transfer_learning/`) | `fine_tuning.py`, `domain_adaptation.py` | 微调策略（冻结/部分/全），CORAL 协方差对齐，DANN 域对抗 |
-| **超参优化** (`hyperparameter_optimization/`) | `bayesian_optimization.py`, `grid_random_search.py` | 高斯过程+EI，网格/随机搜索对比 |
+| **朴素贝叶斯** (`naive_bayes/`) | `gaussian_nb.py`, `multinomial_nb.py`, `bernoulli_nb.py` | 高斯/多项式/伯努利 NB，从零实现，文本分类/二值特征 |
+| **K近邻** (`knn/`) | `knn_classifier.py`, `knn_regressor.py` | 分类+回归，K值敏感性，欧氏/曼哈顿距离 |
+| **决策树** (`decision_tree/`) | `decision_tree_cart.py`, `decision_tree_c45.py`, `decision_tree_id3.py` | CART(Gini)/C4.5(信息增益率)/ID3(信息增益)，从零递归实现 |
+| **正则化回归** (`regularized_regression/`) | `ridge_regression.py`, `lasso_regression.py` | Ridge(L2)/Lasso(L1)，闭式解+坐标下降，α敏感性+特征选择 |
+| **高斯混合模型** (`gmm/`) | `gmm.py`, `em_algorithm.py` | 软聚类，从零实现 EM 算法，BIC/AIC 选择，责任度热力图 |
+| **条件随机场** (`crf/`) | `linear_chain_crf.py` | 序列标注，前向-后向+Viterbi 解码，序列对比 |
