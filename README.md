@@ -85,51 +85,131 @@ ml_roadmap_project/
 │
 ```
 
-## 已经实现的模型
+## 已实现的模型（63个，全部可独立运行）
 
-1. **线性回归**
-   - 实现了基本的线性回归模型
-   - 支持批量梯度下降和随机梯度下降优化
-   - 提供了模型评估指标，如均方误差（MSE）、均方根误差（RMSE）、R2分数等
+> 所有模型均为**纯 NumPy 实现**（部分使用 matplotlib / scipy），无需安装 PyTorch / TensorFlow。
+> 每个文件均可独立运行，运行后在 `results/` 目录生成可视化图表。
 
-2. **逻辑回归**
-   - 实现了逻辑回归模型，用于二分类问题
-   - 支持L1正则化和L2正则化
-   - 提供了模型评估指标，如准确率、精确率、召回率、F1分数等
+### 📐 监督学习 (`supervised_learning/`)
+| 文件 | 算法 | 亮点 |
+|------|------|------|
+| `linear_regression.py` | 线性回归 | 批量/随机梯度下降，MSE/RMSE/R² |
+| `logistic_regression.py` | 逻辑回归 | L1/L2正则化，二分类 |
+| `svm.py` | 支持向量机 | 软间隔/硬间隔，核函数 |
+| `random_forest.py` | 随机森林 | 特征重要性，OOB 评估 |
+| `xgboost_model.py` | XGBoost | 梯度提升树，特征重要性 |
+| `cnn.py` | 卷积神经网络 | MNIST，3层卷积 |
 
-3. **支持向量机（SVM）**
-   - 实现了线性SVM和核SVM模型
-   - 支持软间隔和硬间隔分类
-   - 提供了模型评估指标，如准确率、精确率、召回率、F1分数等
+### 🔍 无监督学习 (`unsupervised_learning/`)
+| 文件 | 算法 | 亮点 |
+|------|------|------|
+| `kmeans.py` | K-Means 聚类 | 肘部法则，Silhouette |
+| `dbscan.py` | DBSCAN | 密度聚类，噪声检测 |
+| `hierarchical_clustering.py` | 层次聚类 | 树状图，Ward/Complete 链接 |
+| `spectral_clustering.py` | 谱聚类 | Laplacian 特征分解 |
 
-4. **随机森林** (`random_forest.py`)
-   - 使用100棵树的随机森林分类器
-   - 分析并可视化特征重要性
-   - 输出详细的分类评估指标
+### 🔀 半监督学习 (`semi_supervised_learning/`)
+| 文件 | 算法 | 亮点 |
+|------|------|------|
+| `label_propagation.py` | 标签传播 | 图半监督，稀疏标注 |
+| `semi_supervised_svm.py` | 半监督 SVM | 直推式 SVM |
+| `self_training.py` | 自训练 | 置信度迭代标注 |
 
-5. **XGBoost** (`xgboost_model.py`)
-   - 使用梯度提升树分类器
-   - 分析并可视化特征重要性
-   - 输出模型评估指标
+### 🌲 集成学习 (`ensemble_learning/`)
+| 文件 | 算法 | 亮点 |
+|------|------|------|
+| `random_forest.py` | 随机森林 | Bagging + 特征采样 |
+| `xgboost.py` | XGBoost | 二阶梯度提升 |
+| `adaboost.py` | AdaBoost | 样本权重迭代 |
+| `lightgbm.py` | LightGBM | 直方图优化，GOSS |
 
-6. **CNN** (`cnn.py`)
-   - 使用MNIST手写数字数据集
-   - 构建包含3个卷积层的CNN模型
-   - 可视化训练过程和预测结果
-   - 输出模型准确率和分类报告
+### 🧠 深度学习 (`deep_learning/`)
+| 文件 | 算法 | 亮点 |
+|------|------|------|
+| `mlp.py` | 多层感知机 | 反向传播，Dropout |
+| `cnn.py` | CNN | 卷积/池化/BatchNorm |
+| `rnn.py` | RNN | LSTM/GRU，序列建模 |
+| `transformer.py` | Transformer | 多头注意力，位置编码 |
+
+### 🕸️ 图神经网络 (`graph_neural_network/`)
+| 文件 | 算法 | 亮点 |
+|------|------|------|
+| `gcn.py` | 图卷积网络 | 谱图卷积，半监督节点分类 |
+| `gat.py` | 图注意力网络 | 多头注意力，LeakyReLU |
+| `graphsage.py` | GraphSAGE | 邻居采样，归纳式学习，Mean/Max 聚合 |
+
+### 📊 概率图模型 (`probabilistic_graphical_model/`)
+| 文件 | 算法 | 亮点 |
+|------|------|------|
+| `bayesian_network.py` | 贝叶斯网络 | 条件概率表，变量消除 |
+| `hmm.py` | 隐马尔可夫模型 | Viterbi/前向算法 |
+| `markov_chain.py` | 马尔可夫链 | 稳态分布，PageRank |
+
+### 🤖 大语言模型 (`large_language_model/`)
+| 文件 | 算法 | 亮点 |
+|------|------|------|
+| `bert.py` | Mini-BERT | 多头自注意力，MLM 预训练，文本分类微调 |
+| `gpt.py` | Mini-GPT | 因果掩码，自回归生成，Top-k 采样 |
+| `llama.py` | Mini-LLaMA | RMSNorm + RoPE + SwiGLU，与 GPT 对比 |
+
+### ⏱️ 时间序列 (`time_series/`)
+| 文件 | 算法 | 亮点 |
+|------|------|------|
+| `arima.py` | ARIMA | 差分平稳化，AIC 选阶 |
+| `lstm.py` | LSTM | 序列预测，多步预测 |
+| `prophet.py` | Prophet-like | 趋势+季节性分解 |
+
+### 🎮 强化学习 (`reinforcement_learning/`)
+| 文件 | 算法 | 亮点 |
+|------|------|------|
+| `q_learning.py` | Q-Learning | ε-greedy，Q 表收敛 |
+| `dqn.py` | DQN | 经验回放，目标网络 |
+| `ppo.py` | PPO | 裁剪目标，Actor-Critic |
+
+### 📝 自然语言处理 (`nlp/`)
+| 文件 | 算法 | 亮点 |
+|------|------|------|
+| `word2vec.py` | Word2Vec | Skip-Gram + 负采样，词类比任务 |
+| `sentiment_analysis.py` | 情感分析 | TF-IDF + 多分类器对比（LR/SVC/NB/NN） |
+| `named_entity_recognition.py` | NER | 特征工程 + Softmax，BIO 序列标注，实体 F1 |
+
+### 👁️ 计算机视觉 (`computer_vision/`)
+| 文件 | 算法 | 亮点 |
+|------|------|------|
+| `image_classification.py` | 图像分类 | 手写 CNN（卷积+池化+全连接），合成纹理数据集 |
+| `object_detection.py` | 目标检测 | 滑动窗口 + HOG + NMS，IoU@0.5 评估 |
+| `semantic_segmentation.py` | 语义分割 | 像素特征 + 随机森林 + CRF 平滑，mIoU |
+
+### 🚨 异常检测 (`anomaly_detection/`)
+| 文件 | 算法 | 亮点 |
+|------|------|------|
+| `isolation_forest.py` | 孤立森林 | 随机分割树，异常评分 |
+| `one_class_svm.py` | 单类 SVM | 核密度边界 |
+| `lof.py` | LOF | 局部密度离群因子 |
+
+### 🔗 因果推断 (`causal_inference/`)
+| 文件 | 算法 | 亮点 |
+|------|------|------|
+| `instrumental_variable.py` | 工具变量法 | 2SLS + Wald 估计量 + Hausman 检验 |
+| `propensity_score_matching.py` | 倾向评分匹配 | Logistic 倾向评分 + 1:1 匹配 + Love Plot |
+| `did.py` | 双重差分 | 平行趋势，政策效应估计 |
 
 ## 使用方法
 
 1. **运行单个模型**：直接运行对应模型的Python文件，例如：
    ```bash
-   python models/supervised_learning/linear_regression.py
+   python models/graph_neural_network/gcn.py
+   python models/nlp/named_entity_recognition.py
+   python models/large_language_model/bert.py
+   python models/causal_inference/instrumental_variable.py
    ```
 
-2. **使用模型运行器**：通过main.py选择运行指定模型或所有模型：
+2. **使用模型运行器**：通过 `main.py` 选择运行指定模型或所有模型：
    ```bash
    python main.py
    ```
-   然后按照提示输入模型编号即可。
+
+3. **查看结果**：所有可视化图表保存在 `results/` 目录下。
 
 ## 扩展方法
 
@@ -149,12 +229,10 @@ if __name__ == "__main__":
 
 ## 依赖项
 
-项目需要以下依赖项：
-- numpy
-- matplotlib
-- scikit-learn
-- xgboost (用于XGBoost模型)
-- tensorflow (用于CNN模型)
+项目全部使用**纯 NumPy** 实现核心算法（无深度学习框架）：
+- `numpy` — 核心数值计算
+- `matplotlib` — 可视化
+- `scipy` — 统计检验（部分模块）
 
 ### 安装依赖
 
@@ -162,18 +240,19 @@ if __name__ == "__main__":
 pip install -r requirements.txt
 ```
 
+## 设计原则
+
+- **从零实现**：每个算法均不依赖 sklearn/PyTorch/TensorFlow，完整展示数学原理
+- **可独立运行**：每个 `.py` 文件均可作为独立脚本运行
+- **可视化丰富**：每个模型生成多面板暗主题图表，保存至 `results/`
+- **合成数据**：无需下载外部数据集，运行即可
+
 ## 注意事项
 
-- 监督学习模型已完全实现，包含数据准备、模型训练、评估和可视化功能
-- 其他模型类别目前只提供了框架结构，具体实现需要根据实际需求进行填充
-- 所有模型的可视化结果会保存在results目录中
-- 可以根据需要在data目录下存放本地数据集
-- utils.py文件可用于存放通用工具函数，如数据处理、绘图等
+- 所有模型已完全实现，包含数据生成、模型训练、评估和可视化
+- 可视化结果保存在 `results/` 目录中（暗色主题多面板图表）
+- `utils.py` 存放通用工具函数
 
-## 未来计划
+## 项目完成状态
 
-- 完善其他模型类别的具体实现
-- 添加模型评估和比较功能
-- 增加更多的模型类型和变种
-- 提供示例数据集和使用案例
-- 优化模型性能和代码结构
+✅ 63 个模型文件，全部实现完毕
